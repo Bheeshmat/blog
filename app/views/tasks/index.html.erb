@@ -1,35 +1,20 @@
 <h1>Not Started</h1>
-<ul>
-  <% @not_started_tasks.each do |task| %>
-    <li>
-      <%= task.title %>
-      (<%= link_to "Start", task_path(task, status: Task::Status::STARTED), method: :patch %>)
-    </li>
-  <% end %>
+<ul id="tasks-<%= Task::Status::NOT_STARTED %>">
+  <%# @not_started_tasks.each do |task| %>
+    <%#= render partial: 'tasks/task', locals: {task: task} %>
+    <%#= render task %>
+  <%# end %>
+  <%= render @not_started_tasks %>
 </ul>
 
 <h1>Started Tasks</h1>
-<ul>
-  <% @started_tasks.each do |task| %>
-    <li>
-      <%= task.title %>
-      (
-      <%= link_to "Finish", task_path(task, status: Task::Status::FINISHED), method: :patch %>
-      |
-      <%= link_to "Shelf", task_path(task, status: Task::Status::NOT_STARTED), method: :patch %>
-      )
-    </li>
-  <% end %>
+<ul id="tasks-<%= Task::Status::STARTED %>">
+  <%= render @started_tasks %>
 </ul>
 
 <h1>Finished Tasks</h1>
-<ul>
-  <% @finished_tasks.each do |task| %>
-    <li>
-      <%= task.title %>
-      (<%= link_to "Rework", task_path(task, status: Task::Status::STARTED), method: :patch %>)
-    </li>
-  <% end %>
+<ul id="tasks-<%= Task::Status::FINISHED %>">
+  <%= render @finished_tasks %>
 </ul>
 
 <%= link_to "Add New Task", new_task_path, class: "btn btn-primary btn-sm" %>

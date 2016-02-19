@@ -22,4 +22,12 @@ class Task < ActiveRecord::Base
   scope :finished,    -> {where(status: Status::FINISHED)}
 
   validates :title, presence: true
+
+  def not_started?
+    self.status == Status::NOT_STARTED
+  end
+
+  def started?
+    self.status == Status::STARTED
+  end
 end
