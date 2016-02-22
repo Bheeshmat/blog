@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'contact' => 'home#contact', as: :contact
   get 'faq' => 'home#faq', as: :faq
   # The priority is based upon order of creation: first created -> highest priority.
