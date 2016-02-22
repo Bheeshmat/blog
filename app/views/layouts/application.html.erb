@@ -8,10 +8,10 @@
 </head>
 <body>
 <div class="container">
-  <% if flash[:success] %>
-    <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
-  <% elsif flash[:error] %>
-    <div class="alert alert-danger" role="alert"><%= flash[:error] %></div>
+  <% if flash[:success] || flash[:notice] %>
+    <div class="alert alert-success" role="alert"><%= flash[:success] || flash[:notice] %></div>
+  <% elsif flash[:error] || flash[:alert] %>
+    <div class="alert alert-danger" role="alert"><%= flash[:error] || flash[:alert] %></div>
   <% end %>
   <%= render partial: 'common/header' unless controller_name == "home" && action_name == "land" %>
   <%= yield %>
